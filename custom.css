@@ -1,8 +1,64 @@
 /* (C) Copyright Bobbing Wide 2016 */
-/* custom.css for Specially Built */
+/* custom.css for genesis-SB - Specially Built */
 
 
 
 .nav-primary { 
 	background-color: #ffffff;
+}
+
+div.bw_taxonomy {
+	display: inline-block;
+}
+
+
+div.bw_taxonomy span.label,
+div.bw_taxonomy span.sep {
+	display: none;
+}
+
+div.bw_taxonomy.category a,
+div.bw_taxonomy.s a,
+div.bw_taxonomy.b a
+ {
+    background-color: #767676;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2727272727;
+    margin: 2px 4px 2px 10px;
+    padding: 3px 7px;
+    position: relative;
+    /* text-transform: uppercase; */
+}
+
+
+div.bw_taxonomy.category a:before,
+div.bw_taxonomy.s a:before,
+div.bw_taxonomy.b a:before {
+    border-top: 10px solid transparent;
+    border-right: 8px solid #767676;
+    border-bottom: 10px solid transparent;
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: -8px;
+    width: 0
+}
+
+
+div.bw_taxonomy.category a:after,
+div.bw_taxonomy.s a:after,
+div.bw_taxonomy.b a:after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 4px;
+    position: absolute;
+    top: 8px;
+    left: -2px;
+    width: 4px;
 }
