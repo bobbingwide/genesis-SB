@@ -18,8 +18,8 @@ div.bw_taxonomy span.sep {
 }
 
 div.bw_taxonomy.category a,
-div.bw_taxonomy.s a,
-div.bw_taxonomy.b a
+div.bw_taxonomy.s-word a,
+div.bw_taxonomy.b-word a
  {
     background-color: #767676;
     border-radius: 0 2px 2px 0;
@@ -36,8 +36,8 @@ div.bw_taxonomy.b a
 
 
 div.bw_taxonomy.category a:before,
-div.bw_taxonomy.s a:before,
-div.bw_taxonomy.b a:before {
+div.bw_taxonomy.s-word a:before,
+div.bw_taxonomy.b-word a:before {
     border-top: 10px solid transparent;
     border-right: 8px solid #767676;
     border-bottom: 10px solid transparent;
@@ -51,8 +51,8 @@ div.bw_taxonomy.b a:before {
 
 
 div.bw_taxonomy.category a:after,
-div.bw_taxonomy.s a:after,
-div.bw_taxonomy.b a:after {
+div.bw_taxonomy.s-word a:after,
+div.bw_taxonomy.b-word a:after {
     background-color: #fff;
     border-radius: 50%;
     content: "";
@@ -62,3 +62,86 @@ div.bw_taxonomy.b a:after {
     left: -2px;
     width: 4px;
 }
+
+/**
+ * On a wide screen each article should be 50%
+ * and there should be 2 a line
+ */
+body.home article, 
+body.archive article {
+	width: 50%;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	min-height: 250px;
+}
+
+body.home article:nth-child(even),
+body.archive article:nth-child(even),
+article:nth-child(even) {
+	clear: both;
+}
+
+body.single article {
+	width: 100%;
+}
+
+body.home header.entry-header,
+body.archive header.entry-header { 
+	display: block; 
+	position: absolute; 
+	top: 1%; 
+	color: #575756; 
+	background: #ffffff;
+	margin: 0 0% 0 20%;
+	padding: 0px 1%;  
+	/* box-shadow: 4px 4px 3px #1c1c1b; */
+	border-radius: 2px;
+	left: -120%;
+  -moz-transition: left 0.3s ease-in-out;
+  -webkit-transition: left 0.3s ease-in-out;
+  transition: left 0.3s ease-in-out;
+}
+
+body.home div.entry-content div.post-content, 
+body.archive div.entry-content div.post-content {
+	display: block; 
+	position: absolute; 
+	top: 40%;
+	background-color: #ffffff;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+	opacity: 0;
+	width: 98%;
+	bottom: 15%;
+	margin: 0 2% 0 0; 
+ }
+ 
+
+body.home article:hover header.entry-header, 
+body.archive article:hover header.entry-header {
+	left:0; 
+	transition: all 0.3s ease-in-out;
+}
+
+body.home  article:hover div.entry-content div.post-content, 
+body.archive article:hover div.entry-content div.post-content {
+	opacity: 0.8;
+	transition: all 0.3s ease-in-out;
+	font-size: 90%;
+	margin: 0px 1% 0px 1%;
+}
+
+.genesis-nav-menu {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+img { 
+	max-width: 100%;
+	margin: 0 auto;
+}
+

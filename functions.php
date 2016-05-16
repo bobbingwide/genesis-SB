@@ -46,6 +46,8 @@ function genesis_sb_functions_loaded() {
 	add_action( 'genesis_entry_footer', 'genesis_sb_post_info' );
 	//add_filter( "genesis_edit_post_link", "__return_false" );
 	
+	remove_action( "genesis_entry_content", "genesis_do_post_content", 10 );
+	add_action( "genesis_entry_content", "genesis_sb_do_post_content", 10 );
   //genesis_oik_register_sidebars();
 	
 	//genesis_oik_edd();
@@ -108,7 +110,7 @@ function genesis_sb_post_meta() {
 	$post = get_post();
 	$ID = $post->ID;
 
-  $filtered = apply_filters( 'genesis_post_meta', "[bw_field category id=$ID] [bw_field s id=$ID] [bw_field b id=$ID]" );
+  $filtered = apply_filters( 'genesis_post_meta', "[bw_field category id=$ID] [bw_field s-word id=$ID] [bw_field b-word id=$ID]" );
   if ( empty( $filtered ) ) {
     return;
   }
@@ -138,6 +140,54 @@ function _e_c( $string ) {
 	echo $string;
 	echo "-->";
 }
+}
+
+/**
+ * Display the attached image and title
+ * 
+ * Here we assume that there is a featured image
+ *
+ */
+function genesis_sb_do_entry_content() {
+
+	$img = genesis_get_image( array(
+					'format'  => 'html',
+					'size'    => genesis_get_option( 'image_size' ),
+					'context' => 'archive',
+					'attr'    => genesis_parse_attr( 'entry-image' ),
+					) );
+
+	if ( !empty( $img ) ) {
+		echo $img;
+	}   else  {
+		//echo "Not got it yet";
+	}
+}
+
+/**
+ * Display the post title 
+ *
+ */
+function genesis_sb_do_post_title() {
+	$title = get_the_title();
+	$output = '<div class="entry-title">';
+	$output .= $title;
+	$output .= '</div>';
+	echo $output;
+}
+
+/** 
+ * Display the post content
+ *
+ * Simpler than genesis_do_post_content() 
+ */
+function genesis_sb_do_post_content() {
+	$output = '<div class="post-content">';
+	$content = get_the_content();
+	$content = apply_filters( "the_content", $content );
+	$output .= $content;
+	$output .= '</div>';
+	echo $output;
 }
 
 
