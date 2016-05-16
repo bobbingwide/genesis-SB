@@ -38,7 +38,8 @@ function genesis_sb_functions_loaded() {
 	
   //add_filter( 'genesis_pre_get_option_site_layout', 'genesis_oik_pre_get_option_site_layout', 10, 2 );
 	
-	//remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+	remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+	add_action( 'genesis_entry_footer', 'genesis_sb_post_meta' );
 	
 	// Remove post info
 	remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
@@ -91,6 +92,39 @@ function genesis_sb_post_info() {
 	$output .= apply_filters( 'genesis_post_info', $string);
 	$output .= genesis_html5() ? '</p>' : '</div>';  
 	echo $output;
+}
+
+/**
+ * Display the post meta in our style
+ * 
+ * This comes before post info
+ * 
+ */
+function genesis_sb_post_meta() {
+
+  //if ( ! post_type_supports( get_post_type(), 'genesis-entry-meta-after-content' ) ) {
+  //  return;
+  //}
+	$post = get_post();
+	$ID = $post->ID;
+
+  $filtered = apply_filters( 'genesis_post_meta', "[bw_field category id=$ID] [bw_field s id=$ID] [bw_field b id=$ID]" );
+  if ( empty( $filtered ) ) {
+    return;
+  }
+
+  $output = genesis_markup( array(
+    'html5'   => '<p %s>',
+    'xhtml'   => '<div class="post-meta">',
+    'context' => 'entry-meta-after-content',
+    'echo'    => false,
+  ) );
+
+  $output .= $filtered;
+  $output .= genesis_html5() ? '</p>' : '</div>';
+
+  echo $output;
+
 }
 
 /**
