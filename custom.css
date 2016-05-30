@@ -1,7 +1,17 @@
 /* (C) Copyright Bobbing Wide 2016 */
 /* custom.css for genesis-SB - Specially Built */
 
+.genesis-nav-menu {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
 
+img { 
+	max-width: 100%;
+	margin: 0 auto;
+}
 
 .nav-primary { 
 	background-color: #ffffff;
@@ -67,6 +77,7 @@ div.bw_taxonomy.b-word a:after {
  * On a wide screen each article should be 50%
  * and there should be 2 a line
  */
+@media screen and ( min-width: 768px ) {
 body.home article, 
 body.archive article {
 	width: 50%;
@@ -133,15 +144,4 @@ body.archive article:hover div.entry-content div.post-content {
 	margin: 0px 1% 0px 1%;
 }
 
-.genesis-nav-menu {
-	display: block;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
 }
-
-img { 
-	max-width: 100%;
-	margin: 0 auto;
-}
-
