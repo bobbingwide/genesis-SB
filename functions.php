@@ -12,10 +12,17 @@ function genesis_sb_functions_loaded() {
 	//* Child theme (do not remove) - is this really necessary? 
 	define( 'CHILD_THEME_NAME', 'Specially Built' );
 	define( 'CHILD_THEME_URL', 'http://www.bobbingwide.com/oik-themes/genesis-SB' );
-	define( 'CHILD_THEME_VERSION', '0.0.0' );
+	//define( 'CHILD_THEME_VERSION', '0.0.0' );
+	
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		$timestamp = filemtime( get_stylesheet_directory() . "/style.css" );
+		define( 'CHILD_THEME_VERSION', $timestamp );
+	} else { 
+		define( 'CHILD_THEME_VERSION', '0.0.2' );
+	}
 	
 	// Start the engine	- @TODO Is this necessary?
-	include_once( get_template_directory() . '/lib/init.php' );
+	//include_once( get_template_directory() . '/lib/init.php' );
 	
 	//* Add HTML5 markup structure
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
