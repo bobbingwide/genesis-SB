@@ -7,7 +7,7 @@
  * 
  * @TODO We might want to turn off some of the widgets in the header and footer
  *  
- * Note: react-SB.js is copied from [github bobbingwide react-SB public/bundle.js]
+ * Note: react-SB.js and react-SB.css are copied from the [github bobbingwide react-SB]
  */
 
 get_header();
@@ -15,11 +15,54 @@ get_header();
 ?>
 <div id='root'></div>
 <?php
+
+genesis_SB_react_update(); 
+
 wp_register_script( "react-SB", CHILD_URL . "/js/react-SB.js" );
 wp_enqueue_script( "react-SB" ); 
 wp_enqueue_style( "react-SB", CHILD_URL . "/css/react-SB.css", array() );
 
 get_footer();
+
+/**
+ * Update our files from the react-SB repository
+ * 
+ * If the react-SB/public directory exists
+ * /apache/htdocs/react-SB/public
+ */ 
+
+function genesis_SB_react_update() {
+	//echo ABSPATH . PHP_EOL;
+	$upabit = dirname( ABSPATH );
+	$react_SB_public = $upabit . '/react-SB/public';
+	//echo $react_SB_public . PHP_EOL;
+	if ( is_dir( $react_SB_public ) ) {
+		genesis_SB_react_update_maybe_copy( $react_SB_public, __DIR__, "/js/react-SB.js" );
+		genesis_SB_react_update_maybe_copy( $react_SB_public, __DIR__, "/css/react-SB.css" );
+	}
+}
+
+/**
+ * Copy a file if necessary
+ * 
+ * Copy the source file to the target file if newer
+ * returning the timestamp of the most recent file
+ * 
+ * We always expect both files to be present, so we should be happy with warning.
+ * 
+ */
+function genesis_SB_react_update_maybe_copy( $source_dir, $target_dir, $file ) {
+	$source_time = filemtime( $source_dir . $file );
+	$target_time = filemtime( $target_dir . $file );
+	if ( $source_time > $target_time ) {
+		copy( $source_dir . $file, $target_dir . $file );
+		p( "File refreshed from source" );
+		p( "$source_dir $file $source_time $target_time" );
+	}
+	return( $source_time );
+}
+	
+
 
 
 /**
