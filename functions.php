@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2016
+<?php // (C) Copyright Bobbing Wide 2016, 2017
 
 genesis_sb_functions_loaded();
 
@@ -21,8 +21,8 @@ function genesis_sb_functions_loaded() {
 		define( 'CHILD_THEME_VERSION', '0.0.2' );
 	}
 	
-	// Start the engine	- @TODO Is this necessary?
-	//include_once( get_template_directory() . '/lib/init.php' );
+	// Start the engine	- This is necessary since otherwise remove_action's may be ineffective
+	include_once( get_template_directory() . '/lib/init.php' );
 	
 	//* Add HTML5 markup structure
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
@@ -38,7 +38,7 @@ function genesis_sb_functions_loaded() {
 		'site-inner'
 	) );
 
-	//* Add support for 5-column footer widgets - requires extra CSS
+	//* Add support for 3-column footer widgets - requires extra CSS - see genesis-footer-widgets plugin
 	add_theme_support( 'genesis-footer-widgets', 3 );
 
 	add_filter( 'genesis_footer_creds_text', "genesis_sb_footer_creds_text" );
@@ -53,7 +53,7 @@ function genesis_sb_functions_loaded() {
 	add_action( 'genesis_entry_footer', 'genesis_sb_post_info' );
 	//add_filter( "genesis_edit_post_link", "__return_false" );
 	
-	remove_action( "genesis_entry_content", "genesis_do_post_content", 10 );
+	remove_action( "genesis_entry_content", "genesis_do_post_content" );
 	add_action( "genesis_entry_content", "genesis_sb_do_post_content", 10 );
   //genesis_oik_register_sidebars();
 	
