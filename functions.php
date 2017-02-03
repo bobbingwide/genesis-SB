@@ -197,4 +197,19 @@ function genesis_sb_do_post_content() {
 	echo $output;
 }
 
+/**
+ * Displays the A to Z pagination
+ */
+function genesis_oik_a2z() {
+	sdiv();
+	h3( "s-words" );
+	bw_flush();
+	do_action( "oik_a2z_display", "s-letter" );
+	h3( "b-words" );
+	bw_flush();
+	do_action( "oik_a2z_display", "b-letter" );
+	ediv();
+	bw_flush();
+}
+
 
