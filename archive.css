@@ -1,0 +1,29 @@
+/** (C) Copyright Bobbing Wide 2016-2017
+ * archive.css for genesis-SB
+ */
+ 
+
+
+ul.a2z li a span.count { 
+	display: none;
+}
+
+@media screen and ( max-width: 768px ) {
+
+.post-type-archive article {
+	width: 48%;
+}
+
+}
+
+
+
+
+@media screen and ( max-width: 480px ) {
+
+.post-type-archive article {
+	width: 98%;
+}
+
+}
+
