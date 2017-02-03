@@ -14,6 +14,9 @@
 
 get_header();
 
+unregister_sidebar( 'footer-1' );
+unregister_sidebar( 'footer-2' );
+
 ?>
 <div id='root'></div>
 <?php
