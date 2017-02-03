@@ -1,4 +1,4 @@
-/* (C) Copyright Bobbing Wide 2016 */
+/* (C) Copyright Bobbing Wide 2016,2017 */
 /* custom.css for genesis-SB - Specially Built */
 
 .genesis-nav-menu {
@@ -72,6 +72,14 @@ div.bw_taxonomy.b-word a:after {
     left: -2px;
     width: 4px;
 }
+
+div.ajax-shortcode div {
+	box-sizing: content-box;
+}
+div.ajax-shortcode div:first {
+	clear: both;
+}
+span.bw_s2eofn { display: block; }
 
 /**
  * On a wide screen each article should be 50%
