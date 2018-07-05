@@ -190,7 +190,7 @@ function genesis_sb_do_post_title() {
  */
 function genesis_sb_do_post_content() {
 	$output = '<div class="post-content">';
-	$content = get_the_content();
+	$content = get_the_content( "more" );
 	$content = apply_filters( "the_content", $content );
 	$output .= $content;
 	$output .= '</div>';
