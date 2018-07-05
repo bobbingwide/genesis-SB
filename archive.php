@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015,2016
+<?php // (C) Copyright Bobbing Wide 2018
 
 /**
  * Implement a tighter loop for archives
@@ -16,10 +16,11 @@ function genesis_oik_do_loop() {
 			//do_action( 'genesis_before_entry' );
 			printf( '<article %s>', genesis_attr( 'entry' ) );
 			//do_action( 'genesis_before_entry_content' );
-			//printf( '<div %s>', genesis_attr( 'entry-content' ) );
+			genesis_do_post_image();
+			printf( '<div %s>', genesis_attr( 'entry-content' ) );
 			do_action( 'genesis_entry_header' );
-			do_action( 'genesis_entry_content' );
-			//echo '</div>';
+			//do_action( 'genesis_entry_content' );
+			echo '</div>';
 			//do_action( 'genesis_after_entry_content' );
 			//do_action( 'genesis_entry_footer' );
 			echo '</article>';
@@ -37,7 +38,7 @@ function genesis_oik_do_loop() {
 function genesis_oik_after_footer() {
  //bw_trace2();
  //bw_backtrace();
- wp_enqueue_style( "taxonomy-css", get_stylesheet_directory_uri() . '/taxonomy.css', array() );
+ wp_enqueue_style( "archive-css", get_stylesheet_directory_uri() . '/archive.css', array() );
 }
 /*
  * Output from genesistant
@@ -55,10 +56,11 @@ function genesis_oik_after_footer() {
  * : 12   genesis_do_post_content_nav;1
  * : 14   genesis_do_post_permalink;1--> 
  */
+remove_action( "genesis_entry_content", "genesis_do_post_image", 8 );
 remove_action( "genesis_entry_content", "genesis_do_post_content", 10 );
 remove_action( "genesis_entry_content", "genesis_do_post_content_nav", 12 ); 
 remove_action( "genesis_entry_content", "genesis_do_post_permalink", 14 );
-add_action( "genesis_entry_content", "genesis_do_post_permalink", 6 );
+//add_action( "genesis_entry_content", "genesis_do_post_permalink", 9 );
  
 // Not necessary to remove these hooks if we don't invoke the action
  
@@ -75,5 +77,13 @@ add_action( "genesis_loop", "genesis_oik_do_loop" );
 add_action( "wp_enqueue_scripts", "genesis_oik_after_footer" );
 
 // add_action( "genesis_after_endwhile", "genesis_oik_a2z", 9 );
+
+function genesis_sb_image_default_args( $defaults, $args ) {
+	bw_trace2();
+	$defaults['fallback'] = 3728;
+	return $defaults;
+}
+
+add_filter( "genesis_get_image_default_args", "genesis_sb_image_default_args", 10, 2 );
 
 genesis();

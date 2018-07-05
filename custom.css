@@ -1,4 +1,4 @@
-/* (C) Copyright Bobbing Wide 2016,2017 */
+/* (C) Copyright Bobbing Wide 2016,2018 */
 /* custom.css for genesis-SB - Specially Built */
 
 .genesis-nav-menu {
@@ -81,6 +81,10 @@ div.ajax-shortcode div:first {
 }
 span.bw_s2eofn { display: block; }
 
+.bw_attachment span.title { 
+	display: none; 
+}
+
 /**
  * On a wide screen each article should be 50%
  * and there should be 2 a line
@@ -92,38 +96,31 @@ body.archive article {
 	float: left;
 	position: relative;
 	overflow: hidden;
-	min-height: 250px;
-}
-
-body.home article:nth-child(even),
-body.archive article:nth-child(even),
-article:nth-child(even) {
-	clear: both;
+	/* min-height: 250px; */
 }
 
 body.single article {
 	width: 100%;
 }
 
-body.home header.entry-header,
-body.archive header.entry-header { 
+body.home header.entry-header {
 	display: block; 
 	position: absolute; 
 	top: 1%; 
 	color: #575756; 
 	background: #ffffff;
-	margin: 0 0% 0 20%;
+	margin: 0 0% 0 0%;
 	padding: 0px 1%;  
 	/* box-shadow: 4px 4px 3px #1c1c1b; */
 	border-radius: 2px;
 	left: -120%;
+	width: 100%;
   -moz-transition: left 0.3s ease-in-out;
   -webkit-transition: left 0.3s ease-in-out;
   transition: left 0.3s ease-in-out;
 }
 
-body.home div.entry-content div.post-content, 
-body.archive div.entry-content div.post-content {
+body.home div.entry-content div.post-content {
 	display: block; 
 	position: absolute; 
 	top: 40%;
@@ -138,18 +135,24 @@ body.archive div.entry-content div.post-content {
  }
  
 
-body.home article:hover header.entry-header, 
-body.archive article:hover header.entry-header {
+body.home article:hover header.entry-header {
 	left:0; 
 	transition: all 0.3s ease-in-out;
 }
 
-body.home  article:hover div.entry-content div.post-content, 
-body.archive article:hover div.entry-content div.post-content {
+body.home article:hover div.entry-content div.post-content {
 	opacity: 0.8;
 	transition: all 0.3s ease-in-out;
 	font-size: 90%;
 	margin: 0px 1% 0px 1%;
+}
+
+body.category article {
+	width: 25%;
+}
+
+body.category article:nth-child(4n+1) {
+	clear: both;
 }
 
 }

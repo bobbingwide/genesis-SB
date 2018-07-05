@@ -1,0 +1,36 @@
+/** (C) Copyright Bobbing Wide 2018
+ * taxonomy.css for genesis-SB
+ */
+ 
+
+
+ul.a2z li a span.count { 
+	display: none;
+}
+
+
+body.archive article:nth-child( odd ) {
+	clear: both;
+}
+
+@media screen and ( max-width: 768px ) {
+
+.post-type-archive article {
+	width: 48%;
+}
+
+
+
+}
+
+
+
+
+@media screen and ( max-width: 480px ) {
+
+.post-type-archive article {
+	width: 98%;
+}
+
+}
+
