@@ -6,6 +6,9 @@
 
 body.category article {
 	width: 25%;
+	float: left;
+	
+	position: relative;
 }
 
 body.category article:nth-child(4n+1) {
@@ -13,11 +16,14 @@ body.category article:nth-child(4n+1) {
 }
  
 
+ 
+
 
 ul.a2z li a span.count { 
 	display: none;
 }
 
+body.archive article,
 h1, h2, h3, h4, h5, h6 { 
 	line-height: 0.8;
 }   
@@ -36,42 +42,6 @@ div.entry-content {
 	
 }
 
-
-
-a.entry-image-link {
-	line-height: 0.8;
-}
-
-@media screen and ( max-width: 768px ) {
-
-.post-type-archive article {
-	width: 48%;
-}
-
-body.category article {
-	width: 50%;
-	float: left;
-	position: relative;
-	 min-height: 25px; 
-}
-
-body.category article:nth-child(odd) {
-	/* clear: both;  */
-}
-
-}
-
-
-/**
- * On a wide screen each article should be 50%
- * and there should be 2 a line
- */
-/* @media screen and ( min-width: 768px ) {  */
-
-body.single article {
-	width: 100%;
-}
- 
 
 body.archive article:hover div.entry-content {
 	left:0; 
@@ -92,8 +62,45 @@ body.archive article header {
 	position: relative;
 	top: 20%;
 	bottom: 0;
+}  
+
+
+
+a.entry-image-link {
+	line-height: 0.8;
 }
-/* } */
+
+@media screen and ( max-width: 768px ) { 
+
+
+
+
+
+} 
+
+
+/**
+ * On a wide screen each article should be 50%
+ * and there should be 2 a line
+ */
+@media screen and ( max-width: 768px ) {  
+body.category article {
+	width: 50%;
+	float: left;
+	position: relative;
+	 min-height: 25px; 
+}
+
+body.category article:nth-child(odd) {
+	/* clear: both;  */
+}
+
+body.single article {
+	width: 100%;
+}
+ 
+
+}
 
 
 

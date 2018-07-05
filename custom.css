@@ -21,6 +21,10 @@ div.bw_taxonomy {
 	display: inline-block;
 }
 
+.entry { 
+	margin-bottom: 0px;
+}
+
 
 div.bw_taxonomy span.label,
 div.bw_taxonomy span.sep {
@@ -90,8 +94,7 @@ span.bw_s2eofn { display: block; }
  * and there should be 2 a line
  */
 @media screen and ( min-width: 768px ) {
-body.home article, 
-body.archive article {
+body.home article {
 	width: 50%;
 	float: left;
 	position: relative;
@@ -145,14 +148,6 @@ body.home article:hover div.entry-content div.post-content {
 	transition: all 0.3s ease-in-out;
 	font-size: 90%;
 	margin: 0px 1% 0px 1%;
-}
-
-body.category article {
-	width: 25%;
-}
-
-body.category article:nth-child(4n+1) {
-	clear: both;
 }
 
 }
