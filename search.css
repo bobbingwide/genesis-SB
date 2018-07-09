@@ -7,17 +7,34 @@
  * https://stackoverflow.com/questions/13851940/pure-css-solution-square-elements/13852277#13852277
  */
  
-body.search article,
-body.date article,
-body.category article {
+section.hero {
+	margin-bottom: 30px;
+}
+
+ 
+div.hero {
+	width: 52%;
+	padding-right: 2%;
+	float: left;
+}
+
+div.entry-content {
+	float: left;
+	width: 38%;
+}
+ 
+article.image {
 	width: 25%;
 	float: left;
-	
 	position: relative;
-	
 	height: 0;
 	padding-bottom: 25%;
 	display: block;
+}
+
+div.links {
+	padding-top: 30px;
+	clear: both;
 }
 
 
@@ -28,6 +45,7 @@ body.category:nth-of-type(4n) article {
 	clear: both;
 }
 
+/*
 div.sb, 
 div.imgwrap,
 header h2 { 
@@ -55,6 +73,7 @@ div.imgwrap a img {
  
 
  
+*/
 
 
 ul.a2z li a span.count { 
@@ -70,7 +89,9 @@ h1, h2, h3, h4, h5, h6 {
 div.sb {
 	font-size: 24px;
 	text-align: center;
-}	 
+}
+
+/*	 
 
 div.entry-content {
 	position: absolute;
@@ -87,6 +108,7 @@ div.entry-content {
 	/* margin-left: -100%; */
 	
 }
+*/
 
 
 body.archive article:hover div.entry-content {
@@ -102,19 +124,19 @@ body.archive article:hover div.entry-content {
 	
 }
 
-
-body.archive article header {
+article.image header {
 	display: block;
 	width: 100%;
 	height: 100%;
-	position: relative;
+	position: absolute;
 	bottom: 0;
 }
 
 
 
 
-a.entry-image-link {
+
+article.image a.entry-image-link {
 	line-height: 0.8;
 	width: 100%;
 	text-align: center;
@@ -123,6 +145,7 @@ a.entry-image-link {
 	height: 100%;
 	
 }
+
 
 @media screen and ( max-width: 768px ) { 
 

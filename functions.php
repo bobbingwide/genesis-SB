@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2016, 2017
+<?php // (C) Copyright Bobbing Wide 2016-2018
 
 genesis_sb_functions_loaded();
 
@@ -225,7 +225,6 @@ function genesis_oik_a2z() {
  */										
 function genesis_sb_the_posts( $posts, $query ) {
 	bw_trace2( count( $posts ), "count(posts)", false );
-	bw_trace2( $query, "query", false );
 	
 	$images = array();
 	$non_images = array();
@@ -242,6 +241,8 @@ function genesis_sb_the_posts( $posts, $query ) {
 	bw_trace2( $images, "images: " . count( $images ), false );
 	bw_trace2( $non_images, "non_images: " . count( $non_images ), false );
 	$posts = $images + $non_images;
+	$query->featured_images = count( $images );
+	bw_trace2( $query, "query", false );
 	
 	
 	return $posts;
