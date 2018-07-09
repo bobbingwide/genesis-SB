@@ -3,6 +3,8 @@
  *
  * Used for displaying Categories and Date archives! 
  *
+ * Styling square boxes! 
+ * https://stackoverflow.com/questions/13851940/pure-css-solution-square-elements/13852277#13852277
  */
  
 
@@ -24,7 +26,9 @@ body.category:nth-of-type(4n) article {
 	clear: both;
 }
 
-div.imgwrap { 
+div.sb, 
+div.imgwrap,
+header h2 { 
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -58,7 +62,13 @@ ul.a2z li a span.count {
 body.archive article,
 h1, h2, h3, h4, h5, h6 { 
 	line-height: 0.8;
-}   
+}
+
+.entry-title,
+div.sb {
+	font-size: 24px;
+	text-align: center;
+}	 
 
 div.entry-content {
 	position: absolute;
@@ -69,8 +79,10 @@ div.entry-content {
 	display: block;
 	transition: all 0.3s ease-in-out;
 	visibility: hidden;
+	width: 100%;
+	background-color: #00003333;
 	
-	margin-left: -100%;
+	/* margin-left: -100%; */
 	
 }
 
@@ -81,20 +93,22 @@ body.archive article:hover div.entry-content {
 	opacity: 1.0;
 	margin-left: 0%;
 	display: block;
-	background-color: white;
+	background-color: ;
 	visibility: visible;
 	width: 100%;
+	height: 100%;
 	
 }
+
 
 body.archive article header {
 	display: block;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	top: 20%;
 	bottom: 0;
-}  
+}
+
 
 
 

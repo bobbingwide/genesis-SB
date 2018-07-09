@@ -86,11 +86,41 @@ add_action( "wp_enqueue_scripts", "genesis_sb_after_footer" );
 
 // add_action( "genesis_after_endwhile", "genesis_oik_a2z", 9 );
 
+function styled_styles( $sb ) {
+	$words = explode( " ", $sb . 'SS BB' );
+	$sword = $words[0];
+	$sletter = substr( $sword, 0, 1 );
+	 
+	$sord = ord( $sletter );
+	$bword = $words[1];
+	$bletter = substr( $bword, 0, 1 );
+	$bord = ord( $bletter );
+	$blue = 255 - ( 10 * strlen( $sb ) );
+	$alpha = "0.9";
+	$style = sprintf( ' style="color: rgba( %1$s, %2$s, %3$s, %4$s );"', $sord, $bord, $blue, $alpha );
+	return $style;
+}
+
+function styled_block( $sb ) {
+	$classes = "sb ";
+	$html = '<div class="'; 
+	$html .= $classes;
+	$html .= '"';
+	$html .= styled_styles( $sb );
+	$html .= '>';
+	$html .= $sb;
+	$html .= '</div>';
+	return $html;
+}
+
+
+
 function genesis_sb_image_default_args( $defaults, $args ) {
 	bw_trace2();
-	$sb = get_the_title();
+	//$sb = get_the_title();
+	$html = styled_block( get_the_title() );
 	
-	$defaults['fallback'] =  array( "html" => '<div class="imgwrap">' . $sb . '</div>', "url" => get_permalink() );
+	$defaults['fallback'] =  array( "html" => $html, "url" => get_permalink() );
 	return $defaults;
 }
 
