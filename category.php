@@ -1,9 +1,13 @@
 <?php // (C) Copyright Bobbing Wide 2018
 
-
 /**
- * Implement a tighter loop for archives
+ * Implement a display for categories
  * 
+ * 1. Explanation of the category
+ * 2. 16 images 
+ * 3. Continuous list of all entries in the category
+ * 
+ *  
  * Basically we don't want any content except the featured image
  * 
  * BUT 
@@ -11,16 +15,13 @@
  * 
  */
 function genesis_oik_do_loop() {
-	
 	if ( have_posts() ) {
 		while ( have_posts() ) {
 			the_post();
 			//do_action( 'genesis_before_entry' );
 			printf( '<article %s>', genesis_attr( 'entry' ) );
 			//do_action( 'genesis_before_entry_content' );
-			//echo '<div class="imgwrap">';
 			genesis_do_post_image();
-			//echo '</div>';
 			printf( '<div %s>', genesis_attr( 'entry-content' ) );
 			do_action( 'genesis_entry_header' );
 			//do_action( 'genesis_entry_content' );
@@ -36,6 +37,8 @@ function genesis_oik_do_loop() {
 	}
 }
 
+
+
 /**
  * Enqueue special styles for archives
  */
@@ -46,8 +49,6 @@ function genesis_sb_after_footer() {
 	}
 	wp_enqueue_style( "archive-css", get_stylesheet_directory_uri() . '/archive.css', array(), $timestamp );
 }
- 
- 
 /*
  * Output from genesistant
  *
@@ -88,9 +89,10 @@ add_action( "wp_enqueue_scripts", "genesis_sb_after_footer" );
 
 function genesis_sb_image_default_args( $defaults, $args ) {
 	bw_trace2();
-	$sb = get_the_title();
+	//$defaults['fallback'] = 3728;
 	
-	$defaults['fallback'] =  array( "html" => '<div class="imgwrap">' . $sb . '</div>', "url" => get_permalink() );
+	
+	$defaults['fallback'] =  array( "html" => '<div class="imgwrap">SB</div>', "url" => get_permalink() );
 	return $defaults;
 }
 

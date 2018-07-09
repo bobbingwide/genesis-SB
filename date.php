@@ -1,8 +1,9 @@
 <?php // (C) Copyright Bobbing Wide 2018
 
-
 /**
- * Implement a tighter loop for archives
+ * By default the date based archive template only works for posts.
+ * For custom post types ( e.g. bigram ) the archive template is used
+ * even when is_date() is true.
  * 
  * Basically we don't want any content except the featured image
  * 
@@ -11,17 +12,14 @@
  * 
  */
 function genesis_oik_do_loop() {
-	
 	if ( have_posts() ) {
 		while ( have_posts() ) {
 			the_post();
 			//do_action( 'genesis_before_entry' );
 			printf( '<article %s>', genesis_attr( 'entry' ) );
 			//do_action( 'genesis_before_entry_content' );
-			//echo '<div class="imgwrap">';
-			genesis_do_post_image();
-			//echo '</div>';
-			printf( '<div %s>', genesis_attr( 'entry-content' ) );
+			//genesis_do_post_image();
+			printf( '<div %s>', genesis_attr( 'entry-content-ed' ) );
 			do_action( 'genesis_entry_header' );
 			//do_action( 'genesis_entry_content' );
 			echo '</div>';
@@ -39,15 +37,11 @@ function genesis_oik_do_loop() {
 /**
  * Enqueue special styles for archives
  */
-function genesis_sb_after_footer() {
-	$timestamp = null;
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		$timestamp = filemtime( get_stylesheet_directory() . "/archive.css" );
-	}
-	wp_enqueue_style( "archive-css", get_stylesheet_directory_uri() . '/archive.css', array(), $timestamp );
+function genesis_oik_after_footer() {
+ //bw_trace2();
+ //bw_backtrace();
+ wp_enqueue_style( "date-css", get_stylesheet_directory_uri() . '/date.css', array() );
 }
- 
- 
 /*
  * Output from genesistant
  *
@@ -82,15 +76,13 @@ add_action( "genesis_loop", "genesis_oik_do_loop" );
 
 
 //add_action( "genesis_after_footer", "genesis_oik_after_footer" );
-add_action( "wp_enqueue_scripts", "genesis_sb_after_footer" );
+add_action( "wp_enqueue_scripts", "genesis_oik_after_footer" );
 
 // add_action( "genesis_after_endwhile", "genesis_oik_a2z", 9 );
 
 function genesis_sb_image_default_args( $defaults, $args ) {
 	bw_trace2();
-	$sb = get_the_title();
-	
-	$defaults['fallback'] =  array( "html" => '<div class="imgwrap">' . $sb . '</div>', "url" => get_permalink() );
+	$defaults['fallback'] = 3728;
 	return $defaults;
 }
 
