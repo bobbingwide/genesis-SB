@@ -1,0 +1,171 @@
+/** (C) Copyright Bobbing Wide 2016-2017
+ * archive.css for genesis-SB
+ *
+ * Used for displaying Categories and Date archives! 
+ *
+ * Styling square boxes! 
+ * https://stackoverflow.com/questions/13851940/pure-css-solution-square-elements/13852277#13852277
+ */
+ 
+body.search article,
+body.date article,
+body.category article {
+	width: 25%;
+	float: left;
+	
+	position: relative;
+	
+	height: 0;
+	padding-bottom: 25%;
+	display: block;
+}
+
+
+body.search:nth-of-type(4n) article, 
+
+body.date:nth-of-type(4n) article,
+body.category:nth-of-type(4n) article {
+	clear: both;
+}
+
+div.sb, 
+div.imgwrap,
+header h2 { 
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	display: block;
+	padding-top: 20%;
+	
+}
+
+div.imgwrap a {
+	display: block;
+	overflow: hidden;
+}
+
+div.imgwrap a img {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: auto;
+} 
+ 
+
+ 
+
+
+ul.a2z li a span.count { 
+	display: none;
+}
+
+body.archive article,
+h1, h2, h3, h4, h5, h6 { 
+	line-height: 0.8;
+}
+
+.entry-title,
+div.sb {
+	font-size: 24px;
+	text-align: center;
+}	 
+
+div.entry-content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	line-height: 0.9;
+	display: block;
+	transition: all 0.3s ease-in-out;
+	visibility: hidden;
+	width: 100%;
+	background-color: #00003333;
+	
+	/* margin-left: -100%; */
+	
+}
+
+
+body.archive article:hover div.entry-content {
+	left:0; 
+	bottom: 0;
+	opacity: 1.0;
+	margin-left: 0%;
+	display: block;
+	background-color: ;
+	visibility: visible;
+	width: 100%;
+	height: 100%;
+	
+}
+
+
+body.archive article header {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	bottom: 0;
+}
+
+
+
+
+a.entry-image-link {
+	line-height: 0.8;
+	width: 100%;
+	text-align: center;
+  position: absolute;
+	display: block;
+	height: 100%;
+	
+}
+
+@media screen and ( max-width: 768px ) { 
+
+
+
+
+
+} 
+
+
+/**
+ * On a wide screen each article should be 50%
+ * and there should be 2 a line
+ */
+@media screen and ( max-width: 768px ) {  
+body.date article, 
+body.category article {
+	width: 50%;
+	float: left;
+	position: relative;
+	 min-height: 25px; 
+}
+
+body.date:nth-of-type(even) article,
+body.category:nth-of-type(even) article {
+	clear: both; 
+}
+
+body.single article {
+	width: 100%;
+}
+ 
+
+}
+
+
+
+
+@media screen and ( max-width: 480px ) {
+
+body.category article {
+	width: 98%;
+}
+
+}
+
