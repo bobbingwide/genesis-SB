@@ -89,6 +89,35 @@ span.bw_s2eofn { display: block; }
 	display: none; 
 }
 
+ul.continuous {
+	display: inline;
+	
+}
+
+ul.continuous > li {
+	float: left; 
+	list-style-type: none;
+	padding-right: 8px;
+	
+}
+ul.continuous > li:after {
+	content: " ";
+}
+
+/**
+
+.s-letter-a { border: 1px dotted #aa0000; }
+.s-letter-b { border: 1px dotted #bb0000; }
+.s-letter-c { border: 1px dotted #cc0000; }
+.s-letter-d,
+.s-letter-e,
+.s-letter-f,
+.s-letter-g { border: 1px dotted #100000; }
+
+
+.b-letter-a { }
+*/
+
 /**
  * On a wide screen each article should be 50%
  * and there should be 2 a line
@@ -106,7 +135,7 @@ body.single article {
 	width: 100%;
 }
 
-body.home header.entry-header {
+body.homa header.entry-header {
 	display: block; 
 	position: absolute; 
 	top: 1%; 
