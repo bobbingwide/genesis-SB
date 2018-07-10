@@ -82,7 +82,7 @@ ul.a2z li a span.count {
 
 body.archive article,
 h1, h2, h3, h4, h5, h6 { 
-	line-height: 0.8;
+	/* line-height: 0.8; */
 }
 
 .entry-title,

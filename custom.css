@@ -123,60 +123,10 @@ ul.continuous > li:after {
  * and there should be 2 a line
  */
 @media screen and ( min-width: 768px ) {
-body.home article {
-	width: 50%;
-	float: left;
-	position: relative;
-	overflow: hidden;
-	/* min-height: 250px; */
-}
 
 body.single article {
 	width: 100%;
 }
 
-body.homa header.entry-header {
-	display: block; 
-	position: absolute; 
-	top: 1%; 
-	color: #575756; 
-	background: #ffffff;
-	margin: 0 0% 0 0%;
-	padding: 0px 1%;  
-	/* box-shadow: 4px 4px 3px #1c1c1b; */
-	border-radius: 2px;
-	left: -120%;
-	width: 100%;
-  -moz-transition: left 0.3s ease-in-out;
-  -webkit-transition: left 0.3s ease-in-out;
-  transition: left 0.3s ease-in-out;
-}
-
-body.home div.entry-content div.post-content {
-	display: block; 
-	position: absolute; 
-	top: 40%;
-	background-color: #ffffff;
-  -moz-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-	opacity: 0;
-	width: 98%;
-	bottom: 15%;
-	margin: 0 2% 0 0; 
- }
- 
-
-body.home article:hover header.entry-header {
-	left:0; 
-	transition: all 0.3s ease-in-out;
-}
-
-body.home article:hover div.entry-content div.post-content {
-	opacity: 0.8;
-	transition: all 0.3s ease-in-out;
-	font-size: 90%;
-	margin: 0px 1% 0px 1%;
-}
 
 }
