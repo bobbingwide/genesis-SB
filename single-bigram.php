@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015, 2016
+<?php // (C) Copyright Bobbing Wide 2015-2018
 //_e_c( __FILE__ );
 
 /**
@@ -49,7 +49,7 @@ add_action( 'genesis_entry_footer', 'genesis_sb_post_info' );
 add_action( 'genesis_entry_content', 'genesis_sb_do_entry_content', 9 );
 //add_action( "genesis_entry_content", "genesis_sb_do_post_title", 9 );
 
-remove_action( 'genesis_after_content', 'genesis_get_sidebar' );
+//remove_action( 'genesis_after_content', 'genesis_get_sidebar' );
 //add_action( 'genesis_after_content', 'genesis_oik_get_sidebar' );
 
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
