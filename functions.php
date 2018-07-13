@@ -59,6 +59,7 @@ function genesis_sb_functions_loaded() {
 	
 	//genesis_oik_edd();
 	add_filter( "the_posts", "genesis_sb_the_posts", 10, 2 );
+	add_filter( 'genesis_noposts_text', "genesis_sb_noposts_text" );
 
 }
 
@@ -246,6 +247,11 @@ function genesis_sb_the_posts( $posts, $query ) {
 	
 	
 	return $posts;
+}
+
+function genesis_sb_noposts_text( $text ) {
+	$text = "Sorry but, no posts surfaced before I gave up looking. Sobeit.";
+	return $text;
 }
 
 /**
