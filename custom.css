@@ -104,6 +104,11 @@ ul.continuous > li:after {
 	content: " ";
 }
 
+div.w12p0 p { 
+	margin-bottom: 0px;
+	line-height: 0.8;
+}
+
 /**
 
 .s-letter-a { border: 1px dotted #aa0000; }
