@@ -60,6 +60,7 @@ function genesis_sb_functions_loaded() {
 	//genesis_oik_edd();
 	add_filter( "the_posts", "genesis_sb_the_posts", 10, 2 );
 	add_filter( 'genesis_noposts_text', "genesis_sb_noposts_text" );
+	add_filter( "bw_custom_column_taxonomy", "genesis_sb_bw_custom_column_taxonomy", 10, 3 );
 
 }
 
@@ -241,10 +242,10 @@ function genesis_sb_the_posts( $posts, $query ) {
 	}
 	bw_trace2( $images, "images: " . count( $images ), false );
 	bw_trace2( $non_images, "non_images: " . count( $non_images ), false );
-	$posts = $images + $non_images;
+	$posts = array_merge( $images, $non_images );
 	$query->featured_images = count( $images );
 	bw_trace2( $query, "query", false );
-	
+	bw_trace2( count( $posts ), "count(posts)", false );
 	
 	return $posts;
 }
@@ -252,6 +253,16 @@ function genesis_sb_the_posts( $posts, $query ) {
 function genesis_sb_noposts_text( $text ) {
 	$text = "Sorry but, no posts surfaced before I gave up looking. Sobeit.";
 	return $text;
+}
+
+/**
+ * Filters bw_custom_column_taxonomy 
+ * 
+ */
+function genesis_sb_bw_custom_column_taxonomy( $terms, $column, $post_id ) {
+	$terms = str_replace( ",", " ", $terms );
+	//gob();
+	return $terms;
 }
 
 /**
