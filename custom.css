@@ -109,6 +109,31 @@ div.w12p0 p {
 	line-height: 0.8;
 }
 
+span.seen-before,
+span.seen-before-value {
+	font-size: 16px;
+}
+
+article.image div.entry-content {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+article.image div.entry-content:after {
+	display: block;
+	content: " ";
+	padding-top: 100%;
+}
+
+article.image div.entry-content:hover header {
+	z-index: 1;
+	background-color: white;
+	top: 80%;
+}
+	
+
 /**
 
 .s-letter-a { border: 1px dotted #aa0000; }
