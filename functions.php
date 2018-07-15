@@ -61,6 +61,8 @@ function genesis_sb_functions_loaded() {
 	add_filter( "the_posts", "genesis_sb_the_posts", 10, 2 );
 	add_filter( 'genesis_noposts_text', "genesis_sb_noposts_text" );
 	add_filter( "bw_custom_column_taxonomy", "genesis_sb_bw_custom_column_taxonomy", 10, 3 );
+	
+	add_action( "genesis_sb_seen_before", "genesis_sb_seen_before" );
 
 }
 
@@ -269,7 +271,6 @@ function genesis_sb_noposts_text( $text ) {
  */
 function genesis_sb_bw_custom_column_taxonomy( $terms, $column, $post_id ) {
 	$terms = str_replace( ",", " ", $terms );
-	//gob();
 	return $terms;
 }
 
@@ -329,12 +330,49 @@ function genesis_sb_hero() {
 			do_action( 'genesis_entry_content' );
 			do_action( 'genesis_after_entry_content' );
 			do_action( 'genesis_entry_footer' );
+			do_action( 'genesis_sb_seen_before' );
 			echo '</div>';
 
 		echo '</article>';
 
 		do_action( 'genesis_after_entry' );
 	echo '</section>';
+}
+
+/**
+ * Increments _seen_before post meta count
+ * 
+ * @return integer Number of times seen before
+ */
+function genesis_sb_increment_seen_before() {
+	$_seen_before = 0;
+	$post = get_post();
+	if ( !$post ) {
+		return 0;
+	}
+	$_seen_before = get_post_meta( $post->ID, '_seen_before', true );
+	if ( false === $_seen_before || '' === $_seen_before ) {
+		$_seen_before = 0;
+	}
+	$seen_before = $_seen_before + 1;
+	update_post_meta( $post->ID, '_seen_before', $seen_before );
+	return $_seen_before;
+}
+
+/**
+ * Displays "Seen before" information 
+ * 
+ * For bigrams only?
+ * 
+ */
+function genesis_sb_seen_before() {
+	$seen_before = genesis_sb_increment_seen_before();
+	echo '<span class="seen-before">';
+	_e( 'Seen before ', 'genesis-SB' );
+	echo '</span>';
+	echo '<span class="seen-before-value">';
+	echo number_format_i18n( $seen_before ); 
+	echo '</span>';
 }
 
 /**

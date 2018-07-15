@@ -44,6 +44,7 @@ remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 
 
 add_action( 'genesis_entry_footer', 'genesis_sb_post_info' );
+add_action( 'genesis_entry_footer', 'genesis_sb_seen_before' );
 
 // Put the image before the rest of the content.
 add_action( 'genesis_entry_content', 'genesis_sb_do_entry_content', 9 );
