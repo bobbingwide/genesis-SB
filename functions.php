@@ -250,8 +250,16 @@ function genesis_sb_the_posts( $posts, $query ) {
 	return $posts;
 }
 
+/**
+ * Implements genesis_noposts_text filter
+ */
 function genesis_sb_noposts_text( $text ) {
-	$text = "Sorry but, no posts surfaced before I gave up looking. Sobeit.";
+	global $sorry_but;
+	if ( $sorry_but ) {
+		$text = $sorry_but;
+	} else {
+		$text = "Sorry but, no posts surfaced before I gave up looking. Sobeit.";
+	}
 	return $text;
 }
 
