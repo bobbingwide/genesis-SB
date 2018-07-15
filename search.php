@@ -8,7 +8,7 @@
  */
 
 add_action( 'genesis_before_loop', 'genesis_sb_do_search_title' );
-add_action( 'genesis_before_loop', 'genesis_sb_seen_before' );
+add_action( 'genesis_before_loop', 'genesis_sb_search_banter' );
 
 /**
  * Echo the title with the search term.
@@ -21,9 +21,8 @@ function genesis_sb_do_search_title() {
 	echo apply_filters( 'genesis_search_title_output', $title ) . "\n";
 }
 
-
 /**
- * Analyses the search for SBs that may have been seen before
+ * Analyses the search for SBs that may have been seen before with some search banter
  * 
  * Processing depends on the search and the results
  * 
@@ -35,7 +34,7 @@ function genesis_sb_do_search_title() {
  * not SB | ?       | Why not search for words starting with S or B ?
  * 
  */
-function genesis_sb_seen_before() {
+function genesis_sb_search_banter() {
 	if ( !is_search() ) {
 		return;
 	}
@@ -100,6 +99,18 @@ function genesis_sb_sorry_but( $text ) {
 	$sorry_but = $text;
 }
 
+function genesis_sb_get_term( $label, $word, $taxonomy ) {
+
+	$term = get_term_by( "slug", $word, $taxonomy );
+	if ( $term ) {
+		echo '<br />';
+		$times = _n( 'Found %1$s %2$s once', 'Found %1$s %2$s %3$s times', $term->count, "genesis-SB" );
+		printf( $times, $label, $word, $term->count ); 
+	}
+	return $term;
+}
+
+
 /**
  * 
  */
@@ -109,11 +120,8 @@ function genesis_sb_consider_terms( $swords, $bwords ) {
 	$bword = current( $bwords );
 	printf( '<br />Considering terms: %1$s %2$s', $sword, $bword );
 	
-	$sterm = get_term_by( "slug", $sword, "s-word" );
-	$bterm = get_term_by( "slug", $bword, "b-word" );
-	
-	echo sprintf( '<br />Found S-word %1$s %2$d times', $sword, $sterm->count ); 
-	echo sprintf( '<br />Found B-word %1$s %2$d times', $bword, $bterm->count ); 
+	$sterm = genesis_sb_get_term( "S-word", $sword, "s-word" ); 
+	$bterm = genesis_sb_get_term( "B-word", $bword, "b-word" );
 	
 	if ( $sterm && $bterm && $sterm->count && $bterm->count ) {
 		//print_r( $sterm );
@@ -123,7 +131,7 @@ function genesis_sb_consider_terms( $swords, $bwords ) {
 			genesis_sb_sorry_but( "You need to be logged in to automatically create searched bigrams" );
 		}
 	} else {
-		genesis_sb_sorry_but( "This doesn't qualify for automatic creation of an SB" );
+		genesis_sb_sorry_but( "This doesn't qualify for automatic creation of an SB." );
 	}
 }
 
@@ -155,6 +163,7 @@ function genesis_sb_create_seen_before( $sword, $bword, $sterm, $bterm ) {
 							 , "post_author" => 1
 							);
 	$id = wp_insert_post( $post, true );
+	wp_add_object_terms( $id, "seen-before", "category" );
 	$metadesc = "{$title_text} bigram";
 	update_post_meta( $id, "_yoast_wpseo_metadesc", $metadesc );
 	update_post_meta( $id, "_yoast_wpseo_focuskw", $metadesc );
@@ -170,8 +179,6 @@ function genesis_sb_create_seen_before( $sword, $bword, $sterm, $bterm ) {
  * then perhaps report on when it was last searched for
  * and how many times displayed.
  */
-
-
 function genesis_sb_check_first_post( $swords, $bwords ) {
 	$sword = current( $swords );
 	$bword = current( $bwords );
@@ -181,20 +188,17 @@ function genesis_sb_check_first_post( $swords, $bwords ) {
 	if ( $post->post_title == genesis_sb_title_text( $sword, $bword ) ) {
 		echo "<br />Satisfied by...";	
 	}
-	
-	
-	
 }
-
-
 
 /**
  * Determines if it's an SB query
  * 
- * Count | S words | B words
- * ----- | ------- | -------
+ * Echoes a message indicating its opinion on the search
  * 
- * 
+ * @param array $terms complete array of terms ( escaped )
+ * @param array $swords array of S-words
+ * @param array $bwords array of B-words
+ * @return bool True if the number of terms is two, one's an S-word and the other's a B-word. False otherwise. 
  */ 
 function is_sb_query( $terms, $swords, $bwords ) {
 	$is_sb_query = false;
@@ -222,4 +226,5 @@ function is_sb_query( $terms, $swords, $bwords ) {
 function genesis_sb_after_footer() {
 	genesis_sb_enqueue_extra_style();
 }
+
 genesis_sb_page();
