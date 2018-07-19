@@ -43,8 +43,10 @@ remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 //add_action( 'genesis_entry_footer', 'genesis_post_info' );
 
 
-add_action( 'genesis_entry_footer', 'genesis_sb_post_info' );
-add_action( 'genesis_entry_footer', 'genesis_sb_seen_before' );
+add_action( 'genesis_entry_footer', 'genesis_sb_seen_before', 9 );
+// No need to add it again! 
+
+//add_action( 'genesis_entry_footer', 'genesis_sb_post_info',  );
 
 // Put the image before the rest of the content.
 add_action( 'genesis_entry_content', 'genesis_sb_do_entry_content', 9 );
