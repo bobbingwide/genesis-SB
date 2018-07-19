@@ -63,6 +63,7 @@ function genesis_sb_functions_loaded() {
 	add_filter( "bw_custom_column_taxonomy", "genesis_sb_bw_custom_column_taxonomy", 10, 3 );
 	
 	add_action( "genesis_sb_seen_before", "genesis_sb_seen_before" );
+	set_post_thumbnail_size( 1024, 1024, true );
 
 }
 
@@ -158,13 +159,14 @@ function _e_c( $string ) {
  * Display the attached image and title
  * 
  * Here we assume that there is a featured image
+ * 
  *
  */
 function genesis_sb_do_entry_content() {
 
 	$img = genesis_get_image( array(
 					'format'  => 'html',
-					'size'    => genesis_get_option( 'image_size' ),
+					'size'    => 'full',  //genesis_get_option( 'image_size' ),
 					'context' => 'archive',
 					'attr'    => genesis_parse_attr( 'entry-image' ),
 					) );
