@@ -60,7 +60,8 @@ function genesis_sb_functions_loaded() {
 	//genesis_oik_edd();
 	add_filter( "the_posts", "genesis_sb_the_posts", 10, 2 );
 	add_filter( 'genesis_noposts_text', "genesis_sb_noposts_text" );
-	add_filter( "bw_custom_column_taxonomy", "genesis_sb_bw_custom_column_taxonomy", 10, 3 );
+	//add_filter( "bw_custom_column_taxonomy", "genesis_sb_bw_custom_column_taxonomy", 10, 3 );
+	add_filter( "oik_shortcode_result", "genesis_sb_oik_shortcode_result", 10, 4 );
 	
 	add_action( "genesis_sb_seen_before", "genesis_sb_seen_before" );
 	set_post_thumbnail_size( 1024, 1024, true );
@@ -277,6 +278,25 @@ function genesis_sb_bw_custom_column_taxonomy( $terms, $column, $post_id ) {
 }
 
 /**
+ * Implements "oik_shortcode_results" specifically for bw_field
+ * 
+ * We want to convert commas to blanks in custom taxonomy lists.
+ *
+ * @param string $result - the result of the shortcode expansion so far
+ * @param array $atts - shortcode parameters 
+ * @param string $content - future use
+ * @param string $tag - to check it's a bw_field shortcode
+ * @return string - the modified result
+ */
+function genesis_sb_oik_shortcode_result( $result=null, $atts=null, $content=null, $tag=null ) {
+	//bw_trace2();
+	if ( $tag == 'bw_field' ) {
+		$result = str_replace( ",", " ", $result );
+	}
+	return $result;
+}
+
+/**
  * Returns the featured image count
  *
  * @param integer offset start offset - to allow for a big image at the start 
@@ -330,10 +350,10 @@ function genesis_sb_hero() {
 			printf( '<div %s>', genesis_attr( 'entry-content' ) );
 			do_action( 'genesis_entry_header' );
 			do_action( 'genesis_entry_content' );
-			do_action( 'genesis_after_entry_content' );
-			do_action( 'genesis_entry_footer' );
-			do_action( 'genesis_sb_seen_before' );
 			echo '</div>';
+			do_action( 'genesis_after_entry_content' );
+			do_action( 'genesis_sb_seen_before' );
+			do_action( 'genesis_entry_footer' );
 
 		echo '</article>';
 
@@ -369,12 +389,14 @@ function genesis_sb_increment_seen_before() {
  */
 function genesis_sb_seen_before() {
 	$seen_before = genesis_sb_increment_seen_before();
-	echo '<span class="seen-before">';
-	_e( 'Seen before ', 'genesis-SB' );
+	echo '<div class="seen-before">';
+	_e( 'Seen before: ', 'genesis-SB' );
 	echo '</span>';
 	echo '<span class="seen-before-value">';
-	echo number_format_i18n( $seen_before ); 
-	echo '</span>';
+	
+	$times = _n( '%1$s time', '%1$s times', $seen_before, "genesis-SB" );
+	printf( $times, number_format_i18n( $seen_before ) ); 
+	echo '</div>';
 }
 
 /**

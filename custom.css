@@ -148,6 +148,11 @@ em {
 	text-decoration: none;
 	font-style: normal;
 }
+
+div.seen-before {
+	display: block;
+	clear: both;
+}
 	
 
 /**
