@@ -65,6 +65,9 @@ function genesis_sb_functions_loaded() {
 	
 	add_action( "genesis_sb_seen_before", "genesis_sb_seen_before" );
 	set_post_thumbnail_size( 1024, 1024, true );
+	
+	add_filter( "genesis_author_box_title", "genesis_sb_genesis_author_box_title", 10, 2 );
+	add_filter( 'genesis_author_box', 'genesis_sb_genesis_author_box', 10, 6 );
 
 }
 
@@ -295,6 +298,20 @@ function genesis_sb_oik_shortcode_result( $result=null, $atts=null, $content=nul
 	}
 	return $result;
 }
+
+function genesis_sb_genesis_author_box_title( $title, $context ) {
+	$title = str_replace( "About ", " Self ", $title );
+	$title = str_replace( '<span itemprop="name">bigram</span>', "Bio ", $title );
+	return $title;
+}
+
+function genesis_sb_genesis_author_box( $output, $context, $pattern, $gravatar, $title, $description ) {
+	if ( function_exists( "bigram_the_content" ) ) {
+		$output = bigram_the_content( $output );
+	}
+	return $output;
+}
+
 
 /**
  * Returns the featured image count

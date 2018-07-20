@@ -666,9 +666,10 @@ td img { max-width: 14px; }
 }
 
 .author-box {
-	background-color: #fff;
+	background-color: #eee;
 	font-size: 16px;
 	margin-bottom: 40px;
+	margin-top: 40px;
 	padding: 40px;
 }
 
