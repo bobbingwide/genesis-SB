@@ -1,7 +1,7 @@
-<?php // (C) Copyright Bobbing Wide 2017
+<?php // (C) Copyright Bobbing Wide 2017, 2018
 
 /**
- * Page template: react-sb-page
+ * Page template: sb
  * 
  * All we want to do here is to deliver the react-SB JavaScript
  * and a div with id='root' into which the JavaScript is run
