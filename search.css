@@ -1,4 +1,4 @@
-/** (C) Copyright Bobbing Wide 2016-2017
+/** (C) Copyright Bobbing Wide 2016-2018
  * archive.css for genesis-SB
  *
  * Used for displaying Categories and Date archives! 
@@ -18,7 +18,7 @@ div.hero {
 	float: left;
 }
 
-div.entry-content {
+.hero div.entry-content {
 	float: left;
 	width: 38%;
 }

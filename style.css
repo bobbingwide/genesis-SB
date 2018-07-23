@@ -691,8 +691,8 @@ td img { max-width: 14px; }
 }
 
 .site-header .search-form {
-	float: right;
-	margin-top: 12px;
+	/* float: right; */
+	margin-top: 3px; 
 }
 
 .entry-content .search-form,
@@ -924,7 +924,7 @@ img.alignright,
 .title-area {
 	float: left;
 	padding: 0px 0;
-	width: 250px;
+	width: 360px;
 }
 
 .header-full-width .title-area {
@@ -947,6 +947,7 @@ img.alignright,
 	float: left;
 	min-height: 60px;
 	width: 100%;
+	background-size: contain;
 }
 
 .site-description {
@@ -963,16 +964,19 @@ img.alignright,
 .header-image .site-description,
 .header-image .site-title {
 	display: block;
-	text-indent: -9999px;
+	text-indent: 100px; 
+}
+
+.header-image .site-description {
+	float: left;
+	margin-top: -25px;
 }
 
 /* ## Widget Area
 --------------------------------------------- */
 
 .site-header .widget-area {
-	float: right;
 	text-align: right;
-	width: 950px;
 }
 
 
@@ -1492,9 +1496,12 @@ li.comment {
 	.footer-widgets-1,
 	.footer-widgets-2,
 	.footer-widgets-3,
-	.sidebar-primary,
-	.title-area {
+	.sidebar-primary {
 		width: 300px;
+	}
+	
+	.title-area {
+		width: 360px;
 	}
 
 	.footer-widgets-1 {
@@ -1543,9 +1550,9 @@ li.comment {
 
 	.genesis-nav-menu,
 	.site-description,
-	.site-header .title-area,
-	.site-header .search-form,
-	.site-title {
+	.site-header .title-are,
+	.site-header .search-for,
+	.site-titl {
 		text-align: center;
 	}
 
@@ -1556,7 +1563,7 @@ li.comment {
 	}
 
 	.site-header .search-form {
-		margin: 16px auto;
+		margin: 16px 0;
 	}
 
 	.genesis-nav-menu li.right {

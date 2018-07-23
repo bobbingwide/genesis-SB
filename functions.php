@@ -64,10 +64,11 @@ function genesis_sb_functions_loaded() {
 	add_filter( "oik_shortcode_result", "genesis_sb_oik_shortcode_result", 10, 4 );
 	
 	add_action( "genesis_sb_seen_before", "genesis_sb_seen_before" );
-	set_post_thumbnail_size( 1024, 1024, true );
+	set_post_thumbnail_size( 400, 400, true );
 	
 	add_filter( "genesis_author_box_title", "genesis_sb_genesis_author_box_title", 10, 2 );
 	add_filter( 'genesis_author_box', 'genesis_sb_genesis_author_box', 10, 6 );
+	add_filter( 'genesis_search_text', 'genesis_sb_genesis_search_text' );
 
 }
 
@@ -312,6 +313,11 @@ function genesis_sb_genesis_author_box( $output, $context, $pattern, $gravatar, 
 	return $output;
 }
 
+function genesis_sb_genesis_search_text( $search_text ) {
+	$search_text = str_replace( "this website", "bigrams", $search_text );
+	return $search_text;
+}
+
 
 /**
  * Returns the featured image count
@@ -510,7 +516,9 @@ function genesis_sb_image_default_args( $defaults, $args ) {
 	return $defaults;
 }
 
-add_filter( "genesis_get_image_default_args", "genesis_sb_image_default_args", 10, 2 );
+// We don't want anything if there's no image.
+
+//add_filter( "genesis_get_image_default_args", "genesis_sb_image_default_args", 10, 2 );
 
 /**
  * Implement a tighter loop for archives
