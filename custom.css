@@ -138,7 +138,8 @@ article.image div.entry-content header .entry-title {
 }
 
 div.taxonomy-archive-description {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
+	padding: 20px;
 	border-bottom: 2px solid #f5f5f5;
 }
 

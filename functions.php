@@ -351,19 +351,28 @@ function genesis_sb_full_rows( $total, $offset=0, $entries_per_row=4, $maximum_r
 
 /**
  * Display the hero banner
+ *
+ * Cater for there not actually being a featured image
  */
 function genesis_sb_hero() {
 	//echo "<h1>Hero</h1>";
 	//genesis_sb_do_post_content();
-	printf( '<section %s>', genesis_attr( 'hero' ) );
+	$has_post_thumbnail = has_post_thumbnail();
+	if ( $has_post_thumbnail ) {
+		$hero_attr = "hero";
+	} else {
+		$hero_attr = "no-hero";
+	}
+	printf( '<section %s>', genesis_attr( $hero_attr ) );
 		do_action( 'genesis_before_entry' );
 		printf( '<article %s>', genesis_attr( 'entry' ) );
 
 			do_action( 'genesis_before_entry_content' );
-			printf( '<div %s>', genesis_attr( 'hero' ) );
-			genesis_do_post_image();
-			echo '</div>';
-			
+			if ( $has_post_thumbnail ) {
+				printf( '<div %s>', genesis_attr( $hero_attr ) );
+				genesis_do_post_image();
+				echo '</div>';
+			}
 			printf( '<div %s>', genesis_attr( 'entry-content' ) );
 			do_action( 'genesis_entry_header' );
 			do_action( 'genesis_entry_content' );
