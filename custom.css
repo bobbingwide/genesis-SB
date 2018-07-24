@@ -154,6 +154,19 @@ div.seen-before {
 	display: block;
 	clear: both;
 }
+
+/** 
+ * A failed attempt to use plain text for the logo
+ * Failed because:
+ * 1. Serif is the wrong font. It needs to be Yu Mincho. Sitka Banner is similar but not quite the same
+ * 2. The vertical alignment of the SB and square brackets needs to be tweaked slightly.
+ * 3. I managed to get the logo and text description working... choosing logo in theme options
+ 
+h1.site-title:before {
+	content: "[SB]";
+	font-family: Serif;
+}
+ */
 	
 
 /**

@@ -2,9 +2,9 @@
 Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: genesis, SB, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments
-Requires at least: 4.4
-Tested up to: 4.6.1
-Version: 0.0.2
+Requires at least: 4.9
+Tested up to: 4.9.7
+Version: 0.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Hence the name, Specially Built.
 
 
 == Change Log ==
+= 0.0.3 = 
+* Added: Lots of changes to go with the Seriously Bonkers book
+
 = 0.0.2 =
 * Added: screenshot.png
 * Changed: styling
@@ -46,7 +49,7 @@ Hence the name, Specially Built.
 
  
 == Copyright ==
-(C) Copyright Bobbing Wide 2016
+(C) Copyright Bobbing Wide 2016-2018
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

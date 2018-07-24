@@ -4,9 +4,9 @@ Theme URI: http://www.oik-plugins.com/oik-themes/genesis-SB
 Description: Child theme of Genesis framework - Specially Built for bigram.co.uk
 Author: Bobbing Wide  
 Author URI: http://www.oik-plugins.com/author/bobbingwide
-Version: 0.0.2
+Version: 0.0.3
 Template: genesis 
-Template Version: 2.4.2  
+Template Version: 2.6.1 
 Tags: oik, plugins, themes, shortcodes 
 License: GPL-2.0+  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -924,7 +924,7 @@ img.alignright,
 .title-area {
 	float: left;
 	padding: 0px 0;
-	width: 360px;
+	width: 50%;
 }
 
 .header-full-width .title-area {
@@ -1455,7 +1455,7 @@ li.comment {
 .site-footer {
 	background-color: #fff;
 	color: #1a1a2a;
-	font-size: 16px;
+	font-size: 12px;
 	line-height: 1;
 	padding: 40px 0;
 	text-align: center;
@@ -1482,8 +1482,7 @@ li.comment {
 		width: 740px;
 	}
 
-	.content,
-	.site-header .widget-area {
+	.content {
 		width: 620px;
 	}
 
@@ -1501,7 +1500,7 @@ li.comment {
 	}
 	
 	.title-area {
-		width: 360px;
+		width: 50%;
 	}
 
 	.footer-widgets-1 {
@@ -1535,7 +1534,12 @@ li.comment {
 	}
 
 	.site-header .wrap {
-		padding: 20px 5%;
+		padding: 0px 1%;
+	}
+	
+	.title-area {
+		float: none;
+		min-height: 60px;
 	}
 
 	.header-image .title-area {
@@ -1564,6 +1568,7 @@ li.comment {
 
 	.site-header .search-form {
 		margin: 16px 0;
+		width: 100%;
 	}
 
 	.genesis-nav-menu li.right {
@@ -1582,11 +1587,15 @@ li.comment {
 		background-color: #fff;
 		font-size: 16px;
 	}
+	
+	.site-header .wrap {
+		padding: 0px 1%;
+	}
 
 	.site-inner,
 	.wrap {
-		padding-left: 5%;
-		padding-right: 5%;
+		padding-left: 1%;
+		padding-right: 1%;
 	}
 
 	.archive-description,
@@ -1622,6 +1631,18 @@ li.comment {
 	.sidebar .widget.enews-widget {
 		padding: 40px;
 	}
+
+}
+
+/**
+ * Adjustments for iPhone 4 
+ */
+
+@media only screen and ( max-width: 320px ) {
+	.site-description { 
+		font-size: 13px;
+	}
+
 
 }
 

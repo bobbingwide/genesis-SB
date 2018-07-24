@@ -190,5 +190,10 @@ body.category article {
 	width: 98%;
 }
 
+div.hero,
+.hero div.entry-content {
+	width: 100%;
+}
+
 }
 
