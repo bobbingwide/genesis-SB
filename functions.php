@@ -377,6 +377,7 @@ function genesis_sb_hero() {
 			if ( $has_post_thumbnail ) {
 				printf( '<div %s>', genesis_attr( $hero_attr ) );
 				genesis_do_post_image();
+				do_action( "genesis_sb_sharing_buttons" );
 				echo '</div>';
 			}
 			printf( '<div %s>', genesis_attr( 'entry-content' ) );
@@ -630,10 +631,24 @@ function genesis_sb_page() {
 	add_action( "wp_enqueue_scripts", "genesis_sb_after_footer" );
 
 	// add_action( "genesis_after_endwhile", "genesis_oik_a2z", 9 );
-
+	
+	genesis_sb_fiddle_jetpack_sharing();
 
 	genesis();
 }
+
+function genesis_sb_fiddle_jetpack_sharing() {
+	remove_filter( 'the_content', 'sharing_display', 19 );
+	remove_filter( 'the_content', 'sharing_display', 19 );
+	//add_action( 'genesis_entry_footer', 'genesis_sb_sharing_buttons' );
+	add_action( 'genesis_sb_sharing_buttons', 'genesis_sb_sharing_buttons' );
+	
+}
+
+function genesis_sb_sharing_buttons() {
+	$share_buttons = sharing_display( '', true );
+}
+
 
 
 
