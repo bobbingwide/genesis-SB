@@ -646,7 +646,9 @@ function genesis_sb_fiddle_jetpack_sharing() {
 }
 
 function genesis_sb_sharing_buttons() {
-	$share_buttons = sharing_display( '', true );
+	if ( function_exists( "sharing_display" ) ) {
+		$share_buttons = sharing_display( '', true );
+	}
 }
 
 
