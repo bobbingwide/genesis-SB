@@ -70,7 +70,8 @@ function genesis_sb_get_term( $label, $word, $taxonomy ) {
 	if ( $term ) {
 		echo '<br />';
 		$times = _n( 'Found %1$s %2$s once', 'Found %1$s %2$s %3$s times', $term->count, "genesis-SB" );
-		printf( $times, $label, $word, $term->count ); 
+		$link = retlink( null, get_term_link( $term ), $word );
+		printf( $times, $label, $link, $term->count ); 
 	}
 	return $term;
 }
