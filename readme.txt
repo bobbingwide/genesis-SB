@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: genesis, SB, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments
 Requires at least: 4.9
-Tested up to: 4.9.7
-Version: 0.0.3
+Tested up to: 4.9.8
+Version: 0.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,12 @@ Hence the name, Specially Built.
 
 
 == Change Log ==
+= 0.0.4 = 
+* Changed: Updated the react-SB page [github bobbingwide react-SB issue 9] 
+* Changed: Display links to the S-word and B-word taxonomy terms on search and 404 pages [github bobbingwide genesis-SB issue 16]
+* Changed: First version of So basically... 404 page [github bobbingwide genesis-SB issue 16]
+* Changed: Add Share buttons ( from Jetpack ), if available [github bobbingwide genesis-SB issue 15]
+
 = 0.0.3 = 
 * Added: Lots of changes to go with the Seriously Bonkers book ( seriouslybonkers.com )
 * Changed: improve header and search box [github bobbingwide genesis-SB issues 14]
